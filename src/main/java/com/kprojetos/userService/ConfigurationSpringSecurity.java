@@ -44,16 +44,17 @@ public class ConfigurationSpringSecurity {
                     .AuthorizationManagerRequestMatcherRegistry authorize
     ) {
         authorize
-                .requestMatchers(HttpMethod.POST, "/users", "users/authenticate").permitAll()
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/users", "users/authenticate").permitAll();
 
-                .requestMatchers(HttpMethod.GET,
-                        "/users",
-                        "/users/{id}"
-                ).hasRole("ADMINISTRATOR")
-
-                .requestMatchers(HttpMethod.PUT, "/users/{id}").permitAll()
-
-                .requestMatchers(HttpMethod.DELETE, "/users/{id}").hasRole("ADMINISTRATOR");
+//                .requestMatchers(HttpMethod.GET,
+//                        "/users",
+//                        "/users/{id}"
+//                ).hasRole("ADMINISTRATOR")
+//
+//                .requestMatchers(HttpMethod.PUT, "/users/{id}").permitAll()
+//
+//                .requestMatchers(HttpMethod.DELETE, "/users/{id}").hasRole("ADMINISTRATOR");
     }
 
     @Bean
